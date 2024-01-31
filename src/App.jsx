@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useState } from 'react';
+import DragContainer from './containers/DragContainer'; // Update the import path
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [textboxes, setTextboxes] = useState(['Textbox 1', 'Textbox 2']);
+
+  const handleDrop = (item) => {
+    setTextboxes((prevTextboxes) => [...prevTextboxes, item.text]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>Newspaper App</h1>
+      <DragContainer textboxes={textboxes} onDrop={handleDrop} />
+    </div>
+  );
+};
 
-export default App
+export default App;
