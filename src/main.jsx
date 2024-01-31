@@ -1,13 +1,16 @@
 // src/index.js or src/main.jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import App from './App';
 
-ReactDOM.render(
+// Create a root using React 18's createRoot API
+const root = createRoot(document.getElementById('root'));
+
+// Render the app within the root using DndProvider for drag-and-drop support
+root.render(
   <DndProvider backend={HTML5Backend}>
     <App />
-  </DndProvider>,
-  document.getElementById('root')
+  </DndProvider>
 );
